@@ -9,7 +9,7 @@ export default class HapiHttp implements HttpServer {
     }
 
     convertUrl (url: string) {
-        return url.replace(/\$/g, "");
+        return url.replace(/\{(\w+)\}/g, ":$1");
     }
 
     async on(method: string, url: string, fn: any): Promise<void> {
